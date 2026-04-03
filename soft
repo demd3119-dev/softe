@@ -82,7 +82,7 @@ Tab:CreateToggle({
 })
 -- HITBOX 10
 local Hitbox10Conn
-Tab:AddToggle({
+Tab:CreateToggle({
     Name = "Хитбокс 10",
     Default = false,
     Callback = function(state)
@@ -130,7 +130,7 @@ Tab:AddToggle({
 
 -- HITBOX 15
 local Hitbox15Conn
-Tab:AddToggle({
+Tab:CreateToggle({
     Name = "Хитбокс 15",
     Default = false,
     Callback = function(state)
@@ -178,7 +178,7 @@ Tab:AddToggle({
 
 -- HITBOX 30
 local Hitbox30Conn
-Tab:AddToggle({
+Tab:CreateToggle({
     Name = "Хитбокс 30",
     Default = false,
     Callback = function(state)
