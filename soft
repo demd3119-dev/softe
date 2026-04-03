@@ -18,7 +18,7 @@ local Window = Rayfield:CreateWindow({
         FileName = "LocalKey",
         SaveKey = true,
         GrabKeyFromSite = true,
-        Key = "https://raw.githubusercontent.com/demd3119-dev/key/refs/heads/main/keyyyy"
+        Key = "{https://raw.githubusercontent.com/demd3119-dev/key/refs/heads/main/keyyyy}"
     },
 
     ConfigurationSaving = {
