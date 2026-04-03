@@ -1,0 +1,285 @@
+-- ✅ Rayfield (НОВА ВЕРСІЯ)
+local Rayfield = loadstring(game:HttpGet("https://sirius.menu/rayfield"))()
+
+-- ✅ Window
+local Window = Rayfield:CreateWindow({
+    Name = "ESP & Хитбоксы",
+    LoadingTitle = "Загрузка...",
+    LoadingSubtitle = "Amethyst Edition",
+    Theme = "Amethyst",
+    ToggleUIKeybind = "K",
+
+    -- 🔑 KEY SYSTEM (ПРАВИЛЬНО)
+    KeySystem = true,
+    KeySettings = {
+        Title = "Key System",
+        Subtitle = "Введи ключ",
+        Note = "Локальний ключ",
+        FileName = "LocalKey",
+        SaveKey = true,
+        GrabKeyFromSite = true,
+        Key = "{https://raw.githubusercontent.com/demd3119-dev/key/refs/heads/main/keyyyy}"
+    },
+
+    ConfigurationSaving = {
+        Enabled = true,
+        FolderName = nil,
+        FileName = "ESP_Config"
+    }
+})
+
+-- ✅ TAB
+local Tab = Window:CreateTab("Главное", "eye")
+
+--------------------------------------------------
+-- ESP FLAGS
+--------------------------------------------------
+_G.WRDESPEnabled = true
+_G.WRDESPBoxes = true
+_G.WRDESPTeamColors = true
+_G.WRDESPTracers = false
+_G.WRDESPNames = true
+
+--------------------------------------------------
+-- ESP LOADER
+--------------------------------------------------
+Tab:CreateButton({
+    Name = "Запустить ESP",
+    Callback = function()
+        if _G.WRDESPLoaded then return end
+        loadstring(game:HttpGet("https://obj.wearedevs.net/2/scripts/WRD%20ESP.lua"))()
+    end
+})
+
+Tab:CreateToggle({
+    Name = "ESP Включен",
+    CurrentValue = _G.WRDESPEnabled,
+    Callback = function(v) _G.WRDESPEnabled = v end
+})
+
+Tab:CreateToggle({
+    Name = "Показать коробки",
+    CurrentValue = _G.WRDESPBoxes,
+    Callback = function(v) _G.WRDESPBoxes = v end
+})
+
+Tab:CreateToggle({
+    Name = "Командные цвета",
+    CurrentValue = _G.WRDESPTeamColors,
+    Callback = function(v) _G.WRDESPTeamColors = v end
+})
+
+Tab:CreateToggle({
+    Name = "Показать имена",
+    CurrentValue = _G.WRDESPNames,
+    Callback = function(v) _G.WRDESPNames = v end
+})
+
+Tab:CreateToggle({
+    Name = "Трейсеры",
+    CurrentValue = _G.WRDESPTracers,
+    Callback = function(v) _G.WRDESPTracers = v end
+})
+-- HITBOX 10
+local Hitbox10Conn
+Tab:CreateToggle({
+    Name = "Хитбокс 10",
+    Default = false,
+    Callback = function(state)
+        local Players = game:GetService("Players")
+        local RunService = game:GetService("RunService")
+
+        if state then
+            Hitbox10Conn = RunService.RenderStepped:Connect(function()
+                for _, plr in pairs(Players:GetPlayers()) do
+                    if plr ~= Players.LocalPlayer and plr.Character then
+                        pcall(function()
+                            local head = plr.Character:FindFirstChild("Head")
+                            if head then
+                                head.Size = Vector3.new(10,10,10)
+                                head.Transparency = 1
+                                head.BrickColor = BrickColor.new("Red")
+                                head.Material = Enum.Material.Neon
+                                head.CanCollide = false
+                                head.Massless = true
+                            end
+                        end)
+                    end
+                end
+            end)
+        else
+            if Hitbox10Conn then Hitbox10Conn:Disconnect() Hitbox10Conn = nil end
+            for _, plr in pairs(Players:GetPlayers()) do
+                if plr ~= Players.LocalPlayer and plr.Character then
+                    pcall(function()
+                        local head = plr.Character:FindFirstChild("Head")
+                        if head then
+                            head.Size = Vector3.new(1,1,1)
+                            head.Transparency = 0
+                            head.BrickColor = BrickColor.new("White")
+                            head.Material = Enum.Material.Plastic
+                            head.CanCollide = true
+                            head.Massless = false
+                        end
+                    end)
+                end
+            end
+        end
+    end
+})
+
+-- HITBOX 15
+local Hitbox15Conn
+Tab:CreateToggle({
+    Name = "Хитбокс 15",
+    Default = false,
+    Callback = function(state)
+        local Players = game:GetService("Players")
+        local RunService = game:GetService("RunService")
+
+        if state then
+            Hitbox15Conn = RunService.RenderStepped:Connect(function()
+                for _, plr in pairs(Players:GetPlayers()) do
+                    if plr ~= Players.LocalPlayer and plr.Character then
+                        pcall(function()
+                            local head = plr.Character:FindFirstChild("Head")
+                            if head then
+                                head.Size = Vector3.new(15,15,15)
+                                head.Transparency = 1
+                                head.BrickColor = BrickColor.new("Red")
+                                head.Material = Enum.Material.Neon
+                                head.CanCollide = false
+                                head.Massless = true
+                            end
+                        end)
+                    end
+                end
+            end)
+        else
+            if Hitbox15Conn then Hitbox15Conn:Disconnect() Hitbox15Conn = nil end
+            for _, plr in pairs(Players:GetPlayers()) do
+                if plr ~= Players.LocalPlayer and plr.Character then
+                    pcall(function()
+                        local head = plr.Character:FindFirstChild("Head")
+                        if head then
+                            head.Size = Vector3.new(1,1,1)
+                            head.Transparency = 0
+                            head.BrickColor = BrickColor.new("White")
+                            head.Material = Enum.Material.Plastic
+                            head.CanCollide = true
+                            head.Massless = false
+                        end
+                    end)
+                end
+            end
+        end
+    end
+})
+
+-- HITBOX 30
+local Hitbox30Conn
+Tab:CreateToggle({
+    Name = "Хитбокс 30",
+    Default = false,
+    Callback = function(state)
+        local Players = game:GetService("Players")
+        local RunService = game:GetService("RunService")
+
+        if state then
+            if Hitbox30Conn then Hitbox30Conn:Disconnect() end
+            Hitbox30Conn = RunService.RenderStepped:Connect(function()
+                for _, plr in pairs(Players:GetPlayers()) do
+                    if plr ~= Players.LocalPlayer and plr.Character then
+                        pcall(function()
+                            local head = plr.Character:FindFirstChild("Head")
+                            if head then
+                                head.Size = Vector3.new(30,30,30)
+                                head.Transparency = 1
+                                head.BrickColor = BrickColor.new("Red")
+                                head.Material = Enum.Material.Neon
+                                head.CanCollide = false
+                                head.Massless = true
+                            end
+                        end)
+                    end
+                end
+            end)
+        else
+            if Hitbox30Conn then Hitbox30Conn:Disconnect() Hitbox30Conn = nil end
+            for _, plr in pairs(Players:GetPlayers()) do
+                if plr ~= Players.LocalPlayer and plr.Character then
+                    pcall(function()
+                        local head = plr.Character:FindFirstChild("Head")
+                        if head then
+                            head.Size = Vector3.new(1,1,1)
+                            head.Transparency = 0
+                            head.BrickColor = BrickColor.new("White")
+                            head.Material = Enum.Material.Plastic
+                            head.CanCollide = true
+                            head.Massless = false
+                        end
+                    end)
+                end
+            end
+        end
+    end
+})
+
+--------------------------------------------------
+-- AUTO HEAL
+--------------------------------------------------
+local HealConn
+
+Tab:CreateToggle({
+    Name = "АВТО ХІЛ",
+    CurrentValue = false,
+    Callback = function(state)
+        local player = game:GetService("Players").LocalPlayer
+
+        if state then
+            local function hook(char)
+                local hum = char:WaitForChild("Humanoid")
+                HealConn = hum.HealthChanged:Connect(function()
+                    hum.Health = hum.MaxHealth
+                end)
+            end
+
+            if player.Character then hook(player.Character) end
+            player.CharacterAdded:Connect(hook)
+        else
+            if HealConn then HealConn:Disconnect() end
+        end
+    end
+})
+
+--------------------------------------------------
+-- INFINITE AMMO
+--------------------------------------------------
+local AmmoTask
+
+Tab:CreateToggle({
+    Name = "ИНФ ПУЛИ",
+    CurrentValue = false,
+    Callback = function(state)
+        if state then
+            AmmoTask = task.spawn(function()
+                local player = game:GetService("Players").LocalPlayer
+                while state do
+                    local char = player.Character
+                    if char then
+                        for _,tool in pairs(char:GetChildren()) do
+                            local rv = tool:FindFirstChild("RepValues")
+                            local mag = rv and rv:FindFirstChild("Mag")
+                            if mag and mag:IsA("IntValue") then
+                                mag.Value = 999999999
+                            end
+                        end
+                    end
+                    task.wait(1)
+                end
+            end)
+        else
+            if AmmoTask then task.cancel(AmmoTask) end
+        end
+    end
+})
