@@ -18,7 +18,7 @@ local Window = Rayfield:CreateWindow({
         FileName = "LocalKey",
         SaveKey = true,
         GrabKeyFromSite = true,
-        Key = "https://gist.githubusercontent.com/dem2013play-cmd/97376fc51a016a9014f7ce585cc018ad/raw/62fe0561957de45737b12f6780db98b192c0ed43/key5555555555"
+        Key = ""
     },
 
     ConfigurationSaving = {
